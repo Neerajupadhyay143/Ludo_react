@@ -1,0 +1,35 @@
+/* Apply the table styles */
+.user-table {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Style the table header (thead) background color to white */
+.user-table table thead {
+  background-color: white;
+  color: #333; /* Set the text color for the header */
+}
+
+/* Style the table header cells (th) */
+.user-table table th {
+  padding: 12px 15px;
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Style the table data cells (td) */
+.user-table table td {
+  padding: 8px 15px;
+  text-align: left;
+}
+
+/* Apply hover effect for the table rows */
+.user-table table tbody tr:hover {
+  background-color: lightgray;
+}
+
+.table-row>th{
+  padding: "20%" !important;
+  color: "white" !important;
+}

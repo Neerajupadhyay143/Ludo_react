@@ -1,0 +1,95 @@
+.table-container{
+  margin-top: 5%;
+    animation: fadeInOut 1s;
+       
+  transition: 0.8s !important;
+  transition-duration: 0.9s !important;
+  transition-timing-function: ease !important;
+  
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    
+  }
+  50% {
+    opacity: 1;
+    transition: 450ms;
+  }
+ 
+}
+.row{
+  border-radius: 5px !important;
+  border-bottom: 1px solid blue !important;
+  border-top: none;
+  color: rgb(255, 255, 255) !important;
+  font-size:  15px !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  transition: 0.8s !important;
+  transition-duration: 0.9s !important;
+  transition-timing-function: ease !important;
+}
+.row-data{
+  border-bottom: none !important;
+  text-align: center !important;
+  color:rgb(145 161 211)!important;
+  transition: 0.8s !important;
+  transition-duration: 0.9s !important;
+  transition-timing-function: ease !important;
+}
+.penalty-input{color: red !important;
+   animation: fadeInOut 1s;
+  border-bottom: transparent !important;
+   box-shadow: 1px 4px 10px -6px red;
+   border: 1px solid red !important;
+   outline: none !important;
+   border-radius: 5px !important;
+  text-align: center !important;
+  transition: 0.8s !important;
+  transition-duration: 0.9s !important;
+  transition-timing-function: ease !important;
+}
+.update-button{
+  background-color: transparent !important;
+
+}
+.update-button:hover{
+  box-shadow: 1px 4px 10px lightgreen !important;
+}
+.table-animation{
+    transition: 0.8s !important;
+  transition-duration: 0.9s !important;
+  transition-timing-function: ease !important;
+}
+.header-search{
+display: flex;
+justify-content: space-between;
+}
+.search-container{
+  display: flex; 
+  margin-right: 70px;
+ 
+  margin-bottom: 20px;
+  color: rgb(255, 255, 255) !important;
+}
+.button-update>.MuiButtonBase-root:hover{
+ background-color: transparent;
+ box-shadow: 1px 1px 10px -1px lime ;
+}
+.search-container>.MuiButtonBase-root:hover{
+background-color: transparent;
+box-shadow: 1px 1px 10px -1px blue;
+}
+.menu-item{
+  background-color: rgb(183, 188, 250) !important;
+}
+.search-here{
+  
+  border: 1px solid blue !important ;
+  border-radius: 5px !important;
+
+}
+.search-here:hover{
+  background-color: transparent !important;
+}

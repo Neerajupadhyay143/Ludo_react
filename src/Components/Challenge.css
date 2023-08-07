@@ -1,0 +1,83 @@
+  .container{
+    margin-top:5% !important ;
+    background-color: #180532!important;
+      border-radius: 8px;
+      padding: 30px;
+      margin-top: 30px ;
+      color: rgb(245, 224, 224);
+      animation: fadeInOut 1s;
+    
+  }
+  tr{
+    border: none;
+  
+  }
+  th{
+    border-radius: 5px;
+    padding-right: 20% !important;
+    text-align: center ;
+    border: none;
+    border-top:none;
+    border-bottom: 1px solid blue;
+    /* box-shadow: 0px 4px 6px 0px blue; */
+    color: orange(21, 115, 255) !important;
+    border-top: none !important;
+    padding: 10px !important;
+    background-color: #15236e !important;
+  }
+  tr>td{
+    padding: 20px;
+    text-align: center;
+    color: rgb(197, 187, 187) !important;
+    border:none;
+    background-color: #1a062e !important; 
+  }
+  .mb-3>label{
+    color: white;
+
+  }
+  .table-header{
+    display: flex;
+    align-items: center;
+  justify-content: space-evenly;
+  }
+  .game-table-container>table{
+    border-radius: 10px !important;
+  }
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      
+    }
+    70% {
+      opacity: 1;
+      transition: 450ms;
+    }
+  
+  }
+  .mb-3>input{
+    margin-bottom: 30px;
+  }
+
+  .aline-input{
+  display: flex;
+  justify-content: space-between ;
+  padding-bottom: 20px;
+  }
+  .table-search{
+    margin-bottom: 12px;
+  }
+  .reset-button-container>button{
+  background-color: white;
+  color: purple;
+  border: none;
+  transition: 300ms;
+  }
+  .reset-button-container>button:hover{
+    transform: scale(1.05);
+  background-color: purple;
+  color:white;
+  }
+  .form-control{
+    background-color:red;
+  }
