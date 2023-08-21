@@ -1,3 +1,9 @@
+
+
+body{
+  background-color: #15236e;
+}
+
 .table-container{
   margin-top: 5%;
     animation: fadeInOut 1s;
@@ -20,7 +26,7 @@
 }
 .row{
   border-radius: 5px !important;
-  border-bottom: 1px solid blue !important;
+  border-bottom: 1px solid rgb(17, 0, 255) !important;
   border-top: none;
   color: rgb(255, 255, 255) !important;
   font-size:  15px !important;
@@ -38,6 +44,7 @@
   transition-duration: 0.9s !important;
   transition-timing-function: ease !important;
 }
+
 .penalty-input{color: red !important;
    animation: fadeInOut 1s;
   border-bottom: transparent !important;
@@ -80,16 +87,89 @@ justify-content: space-between;
 .search-container>.MuiButtonBase-root:hover{
 background-color: transparent;
 box-shadow: 1px 1px 10px -1px blue;
+
 }
 .menu-item{
   background-color: rgb(183, 188, 250) !important;
 }
 .search-here{
-  
-  border: 1px solid blue !important ;
+  color: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(64, 0, 255) !important ;
   border-radius: 5px !important;
 
+}
+
+.search-mine >.MuiInputBase-input{
+  color: white !important;
 }
 .search-here:hover{
   background-color: transparent !important;
 }
+
+
+.table-container-1{
+  margin-top: 5%;
+}
+
+
+
+
+
+
+.search-container{
+  width: 900px;
+  margin-right: 200px;
+  
+}
+
+.gahlot{
+  width: 400px;
+  margin-right: 15px;
+}
+
+.search-button{
+  margin-left: 43%;
+  height: 5vh;
+  margin-top: 1%;
+
+  
+ 
+}
+
+
+  .heading{
+    margin-left: 2%;
+    
+  }
+
+.table-animation>.table{
+  background-color: rgb(4, 4, 89);
+}
+
+
+.button-2{
+  margin-left: 3%;
+  
+}
+
+.btn-secondary{
+ width: 100px;
+ /* margin-left: 5%; */
+ color: white;
+ background-color:rgb(4, 4, 89) ;
+ border-radius: 4px;
+ height: 4vh;
+ cursor: pointer;
+ 
+}
+
+.pdf{
+  font-size: 100px;
+  margin-left: 15%;
+  cursor: pointer;
+}
+
+.print-2{
+  margin-top:  5%;
+}
+

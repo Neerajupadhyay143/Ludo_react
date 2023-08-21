@@ -1,10 +1,11 @@
 
-import { Box, Input, MenuItem, Select } from '@mui/material';
+import { Box, Input, MenuItem, Select, colors } from '@mui/material';
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import RotateLeftIcon from '@mui/icons-material/RotateLeft';
 import Header from './Header';
-import "./Challenge.css";
+// import "./Challenge.css";
+import { green, red, yellow } from '@mui/material/colors';
 
 function Challenge() {
   const initialGames = [
@@ -97,31 +98,20 @@ function Challenge() {
   return (
     <>
       <Box>
-        <div className="container mt-4">
-          <div sx={{ }} className="table-header">
-            <h1></h1>
-            <div className="table-search">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search by Creator"
-                value={searchTerm}
-                onChange={handleSearch}
-              />
-            </div>
-
+        <div className="container_mt-4">
+          {/* <div className="table-header"> */}
             <div className="mb-3">
               <label>Start Date:</label>
-              <input
+              <input 
                 type="date"
                 className="form-control"
                 value={startDate}
                 onChange={handleStartDateChange}
               />
             </div>
-            <div className="mb-3">
+            <div className="mb-4">
               <label>End Date:</label>
-              <input
+              <input 
                 type="date"
                 className="form-control"
                 value={endDate}
@@ -129,7 +119,18 @@ function Challenge() {
               />
             </div>
             <div className="mb-3">
-              <Select sx={{ width: "100px", border: "1px solid white", height: "3rem", color: 'white', outline: "none" }}
+              
+              <input
+                type="text"
+                className="form-control1"
+                placeholder="Search by Creator"
+                value={searchTerm}
+                onChange={handleSearch}
+              />
+            </div>
+        
+            <div className="mb-3">
+              <Select sx={{ width: "100%", border: "1px solid white", height: "40px", color: 'white', outline: "none", backgroundColor:'#15236e', transform: 'translate(600px,-55px)'}}
                 value={statusFilter}
                 onChange={handleStatusChange}
               >
@@ -141,7 +142,12 @@ function Challenge() {
                 <MenuItem value="Cancelled">Cancelled</MenuItem>
               </Select>
             </div>
+            <div className="reset-button-container">
+              <button className="btn btn-secondary" onClick={handleResetFilter}>Reset Filters <span><RotateLeftIcon /></span></button>
+            </div>
+          {/* </div> */}
           </div>
+          
           <div className="game-table-container">
             <table className="table table-striped table-bordered">
               <thead>
@@ -169,16 +175,12 @@ function Challenge() {
                 ))}
               </tbody>
             </table>
-            <div className="reset-button-container">
-              <button className="btn btn-secondary" onClick={handleResetFilter}>Reset Filters <span><RotateLeftIcon /></span></button>
-            </div>
+            
           </div>
-        </div>
+        
       </Box>
     </>
   )
 }
 
 export default Challenge;
-
-

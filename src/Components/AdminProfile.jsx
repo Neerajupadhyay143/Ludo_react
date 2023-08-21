@@ -1,154 +1,124 @@
 import React, { useState } from "react";
-import "./AdminProfile.css";
+// import img1 from "../Images/Doctors/doctor2.jpeg"
+import { FaLinkedinIn } from "react-icons/fa";
+// import { FiTwitter } from "react-icons/fi";
+// import EditPassword from "./Component/EditPassword";
+import { useNavigate } from "react-router";
 
-function AdminProfile({ open, setOpen }) {
-  const [name, setName] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [password, setPassword] = useState("");
-  const [profileFor, setProfileFor] = useState("Bride");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you can perform any actions you want with the form data
-    console.log("Submitted data:", { name, mobile, password, profileFor });
-  };
-
-  // console.log(true);
+function AdminProfile() {
+  const navigate = useNavigate()
+  const [open2, setOpen2] = useState(false)
   return (
     <>
-      {open ? (
-        <div
-          style={{ display: "block" }}
-          className="modal "
-          id="register"
-          aria-hidden="true"
-          aria-labelledby="register-pop"
-          tabIndex="-1">
-          <div className="backgroundattatched" >
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="register-pop">
-                    Let's set up your account, Register Free!
-                  </h5>
-                  <button
-                    type="button"
-                    className="close"
-                    onClick={() => setOpen(false)}
-                    data-dismiss="modal"
-                    aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+      {/* <EditPassword open={open2} setOpen={setOpen2} /> */}
+
+      <div className="px-1 lg:px-6 py-5">
+        <div className="bg-white dark:bg-gray-800 shadow rounded xl:flex lg:flex w-full px-3">
+          <div className="xl:w-2/5 lg:w-2/5 bg-gray-100 dark:bg-gray-800 py-8 border-gray-300 dark:border-gray-200 xl:border-r rounded-tl xl:rounded-bl rounded-tr xl:rounded-tr-none lg:border-r-2 border-b xl:border-b-0 flex justify-center items-center">
+            <div className="flex flex-col items-center">
+              <div className="h-24 w-24 rounded-full mb-3">
+                {/* <img className="h-full w-full object-cover rounded-full shadow" src={img1} /> */}
+              </div>
+              <p className="mb-2 text-lg font-bold text-gray-900 dark:text-gray-100">Shane Doe</p>
+              <p className="mb-6 text-sm text-gray-700 dark:text-gray-400">guptah605@gmail.com</p>
+              <div className="flex mb-6 gap-2">
+
+                <button  className="bg-white font-medium transition duration-150 ease-in-out hover:bg-gray-200 rounded text-[#452a72] px-6 py-2 text-sm border border-[#452a72] dark:border-gray-200 focus:outline-none">Edit Profile</button>
+                <button className="bg-[#452a72] font-medium transition duration-150 ease-in-out hover:bg-transparent rounded text-white hover:text-[#452a72] px-6 py-2 text-sm border border-[#452a72] ] focus:outline-none">Edit Password</button>
+              </div>
+              <div className="flex justify-start flex-wrap pt-5 gap-4 socials px-3">
+
+                <div className="relative overflow-hidden block footer-div cursor-pointer">
+                  <span className="block"><a target="_blank" href="https://www.linkedin.com/in/buff-goofy-164bb027a">
+                    {/* <FaLinkedinIn className="social-links text-white bg-[#7963a7] rounded-full leading-4 p-2 h-8 w-8" /> */}
+                  </a></span>
                 </div>
-                <div className="modal-body">
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                      <label htmlFor="name" className="form-label">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="mobile" className="form-label">
-                        Mobile* / Email address
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        required="required"
-                        id="mobile"
-                        value={mobile}
-                        onChange={(e) => setMobile(e.target.value)}
-                      />
-                    </div>
-                    <div className="row">
-                      <div className="col-sm-6 mb-3">
-                        <label htmlFor="password" className="form-label">
-                          OTP / Password
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                        />
-                      </div>
-                      <div className="col-sm-6 mb-3">
-                        <div className="clearfix">
-                          <label className="form-label">Profile for</label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            // className="form-check-input"
-                            type="radio"
-                            name="matchFor"
-                            id="Bride"
-                            value="Bride"
-                            checked={profileFor === "Bride"}
-                            onChange={() => setProfileFor("Bride")}
-                          />
-                          <label className="form-check-label" htmlFor="Bride">
-                            Bride
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            // className="form-check-input"
-                            type="radio"
-                            name="matchFor"
-                            id="Groom"
-                            value="Groom"
-                            checked={profileFor === "Groom"}
-                            onChange={() => setProfileFor("Groom")}
-                          />
-                          <label className="form-check-label" htmlFor="Groom">
-                            Groom
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-12 justify-content-center d-flex">
-                      <button
-                        type="submit"
-                        className="btn btn-primary"
-                        id="sign-up">
-                        Sign up Now
-                      </button>
-                    </div>
-                  </form>
-                  <div className="social-login">
-                    <h5>- or Register with -</h5>
-                    <a href="#" className="btn google ">
-                      <i className="fab fa-google"></i> Sign up with Google
-                    </a>
-                    <a href="#" className="btn facebook ">
-                      <i className="fab fa-facebook"></i> Sign up with Facebook
-                    </a>
-                  </div>
+                <div className="relative overflow-hidden block footer-div cursor-pointer">
+                  <span className="block"><a target="_blank" href="mailto:contact@buffgoofy.com">
+                    <i className="social-links fa-solid fa-envelope text-white bg-[#7963a7] rounded-full leading-4 p-2 h-8 w-8"></i>
+                  </a></span>
                 </div>
-                <div className="footer-pop">
-                  Already a Member?{" "}
-                  <a
-                    href="#"
-                    data-dismiss="modal"
-                    data-target="#login"
-                    data-toggle="modal">
-                    Login
-                  </a>
+                <div className=" relative overflow-hidden block footer-div cursor-pointer">
+                  <span className="block"><a target="_blank" href="https://www.facebook.com/profile.php?id=100093479117440">
+                    <i className=" social-links fa-brands fa-facebook text-white bg-[#7963a7] rounded-full leading-4 p-2 h-8 w-8"></i>
+                  </a></span>
                 </div>
+                <div className="relative overflow-hidden block footer-div cursor-pointer">
+                  <span className="block">
+                    <a target="_blank" href="https://www.instagram.com/buff.goofy/">
+                      <i className="social-links fa-brands fa-instagram text-white bg-[#7963a7] rounded-full leading-4 p-2 h-8 w-8"></i>
+                    </a></span>
+
+                </div>
+                <div className="relative overflow-hidden block footer-div cursor-pointer">
+                  <span className="block">
+                    <a target="_blank" href="http://discordapp.com/users/1118422230804725760">
+                      <i className="social-links fa-brands fa-discord text-white bg-[#7963a7] rounded-full leading-4 p-2 h-8 w-8"></i>
+                    </a></span>
+
+                </div>
+                <div className="relative overflow-hidden block footer-div cursor-pointer">
+                  <span className="block">
+                    <a target="_blank" href="https://www.reddit.com/user/Buff_Goofy/">
+                      <i className="social-links fa-brands fa-reddit text-white bg-[#7963a7] rounded-full leading-4 p-2 h-8 w-8"></i>
+                    </a></span>
+
+                </div>
+                <div className="relative overflow-hidden block footer-div cursor-pointer">
+                  <span className="block"><a target="_blank" href="https://twitter.com/findoutsoon">
+                    {/* <FiTwitter className="social-links text-white bg-[#7963a7] rounded-full leading-4 p-2 h-8 w-8" /> */}
+                  </a></span>
+                </div>
+
               </div>
             </div>
           </div>
+          <div className="xl:w-3/5 lg:w-3/5 px-6 py-8">
+            <div className="flex flex-wrap justify-between">
+              <div className="w-2/5 mb-8">
+                <div className="border-b pb-3">
+                  <p className="mb-2 text-sm text-gray-700 dark:text-gray-400 font-medium">Birthday</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-400">29 Jan, 1982</p>
+                </div>
+              </div>
+              <div className="w-2/5 mb-8">
+                <div className="border-b pb-3">
+                  <p className="mb-2 text-sm text-gray-700 dark:text-gray-400 font-medium">Gender</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-400">Female</p>
+                </div>
+              </div>
+              <div className="w-2/5 mb-8">
+                <div className="border-b pb-3">
+                  <p className="mb-2 text-sm text-gray-700 dark:text-gray-400 font-medium">Designation</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-400">Senior Heart Specialist</p>
+                </div>
+              </div>
+              <div className="w-2/5 mb-8">
+                <div className="border-b pb-3">
+                  <p className="mb-2 text-sm text-gray-700 dark:text-gray-400 font-medium">Certificate</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-400">ABPS</p>
+                </div>
+              </div>
+              <div className="w-2/5 mb-8">
+                <div className="border-b pb-3">
+                  <p className="mb-2 text-sm text-gray-700 dark:text-gray-400 font-medium">Location</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-400">California, USA</p>
+                </div>
+              </div>
+              <div className="w-2/5 mb-8">
+                <div className="border-b pb-3">
+                  <p className="mb-2 text-sm text-gray-700 dark:text-gray-400 font-medium">Phone Number</p>
+                  <p className="text-sm text-gray-700 dark:text-gray-400">202-555-0191</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
-      ) : null}
+      </div>
+
+      {/* Card code block end */}
     </>
   );
 }
-
 export default AdminProfile;

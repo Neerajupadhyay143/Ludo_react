@@ -16,3 +16,16 @@
   }
  
 }
+/* Add Media Query for Tablets */
+@media screen and (max-width: 1024px) {
+  .Admin-earning {
+    /* Adjust styling for tablet-sized screens */
+  }
+}
+
+/* Add Media Query for Phones */
+@media screen and (max-width: 768px) {
+  .Admin-earning {
+    /* Adjust styling for phone-sized screens */
+  }
+}

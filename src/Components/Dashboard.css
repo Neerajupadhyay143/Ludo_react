@@ -24,6 +24,12 @@ width: 600px;
   }
  
 }
+h3{ 
+    transform: scale(1.04) ;
+   transition: 0.8s !important;
+   transition-duration: 0.9s !important;
+   transition-timing-function: ease all !important;
+}
 .small-box>p{
     text-align: right;
     color: rgb(138, 177, 255);
@@ -38,7 +44,7 @@ width: 600px;
     margin-left: 2%;
     display: flex;
     flex-wrap: wrap;
-    padding-bottom: 40px;
+    padding-bottom: 60px;
     border-bottom: 1px solid rgb(135, 135, 135);
     
 }

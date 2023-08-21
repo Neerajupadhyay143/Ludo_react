@@ -1,8 +1,8 @@
 import React from 'react';
 import "./UserManager.css";
-import { Box, Select, TablePagination } from '@mui/material';
+import { Avatar, Box, Button, Card, Input, Select, TablePagination } from '@mui/material';
 import axios from 'axios';
-import { Height } from '@mui/icons-material';
+// import { Height } from '@mui/icons-material';
 
 function UserManager() {
 
@@ -283,78 +283,90 @@ function UserManager() {
     }
   };
 
-  
+
 
 
   return (
+
+
     <>
-      <select style={{ marginTop: "10%" }} value={selectedField} onChange={(e) => setSelectedField(e.target.value)}>
-        <option value="number">Number</option>
-        <option value="name">Name</option>
-        <option value="mobile">Mobile</option>
-        <option value="balance">Balance</option>
-        <option value="missMatch">Miss Match</option>
-        <option value="gameHold">Game Hold</option>
-        <option value="referBy">Refer by</option>
-        <option value="kyc">KYC</option>
-      </select>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder={`Search by ${selectedField}`}
-      />
+      <div className='container'>
+        <div className='container1'>
+          <select className='select' style={{ marginTop: "10%" }} value={selectedField} onChange={(e) => setSelectedField(e.target.value)}>
+            <option value="number">Number</option>
+            <option value="name">Name</option>
+            <option value="mobile">Mobile</option>
+            <option value="balance">Balance</option>
+            <option value="missMatch">Miss Match</option>
+            <option value="gameHold">Game Hold</option>
+            <option value="referBy">Refer by</option>
+            <option value="kyc">KYC</option>
+          </select>
+          < input className='input'
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder={`Search by ${selectedField}`}
+          /> </div>
 
-      <Box sx={{ marginTop: "5%", width: "100%" }}>
+        <Box sx={{
+          marginTop: "5%", width: "100%"
+        }}>
 
-        <div className="container mt-4">
-          <table  >
-            <thead >
-              <tr className='table-row'>
-                <th>Number</th>
-                <th>Name</th>
-                <th>Mobile</th>
-                <th>Balance</th>
-                <th>Miss Match</th>
-                <th>Game Hold</th>
-                <th>Refer by</th>
-                <th>KYC</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-
-            <tbody >
-              {filteredData.map((user) => (
-                <tr key={user.number}>
-                  <td className='number'>{user.number}</td>
-                  <td className='name'>{user.name}</td>
-                  <td className='mobile'>{user.mobile}</td>
-                  <td className='balance'>{user.balance}</td>
-                  <td className='missMatch'>{user.missMatch ? 'Yes' : 'No'}</td>
-                  <td className='gamehold'>{user.gameHold ? 'Yes' : 'No'}</td>
-                  <td className='referby'>{user.referBy}</td>
-                  <td>
-                    <div className="kyc">{user.kyc ? 'Verified' : 'Unverified'}</div>
-                  </td>
-                  <td className='username'>{user.username}</td>
-                  <td className='password'>{user.password}</td>
-                  <td>
-                    {user.blocked ? (
-                      <div className="static-button">Blocked</div>
-                    ) : (
-                      <button onClick={() => blockUser(user.number)}>Block</button>
-                    )}
-                  </td>
+          <div className="container-mt-4">
+            < table className='User-table'>
+              <thead>
+                <tr  className='table-row' >
+                  <th >Number</th>
+                  <th>Name</th>
+                  <th>Mobile</th>
+                  <th>Balance</th>
+                  <th>Miss Match</th>
+                  <th>Game Hold</th>
+                  <th>Refer by</th>
+                  <th>KYC</th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th>Action</th>
                 </tr>
-              ))}
+              </thead>
+
+              <tbody >
+
+                {filteredData.map((user) => (
+                  <tr  key={user.number}>
+
+                    <td className='number'>{user.number}</td>
+                    <td className='name'>{user.name}</td>
+                    <td className='mobile'>{user.mobile}</td>
+                    <td className='balance'>{user.balance}</td>
+                    <td className='missMatch'>{user.missMatch ? 'Yes' : 'No'}</td>
+                    <td className='gamehold'>{user.gameHold ? 'Yes' : 'No'}</td>
+                    <td className='referby'>{user.referBy}</td>
+                    <td>
+                      <div className="kyc">{user.kyc ? 'Verified' : 'Unverified'}</div>
+                    </td>
+                    <td className='username'>{user.username}</td>
+                    <td className='password'>{user.password}</td>
+                    <td>
+                      {user.blocked ? (
+                        <div className="static-button">Blocked</div>
+                      ) : (
+                        <button onClick={() => blockUser(user.number)}>Block</button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
 
 
-            </tbody>
-          </table>
-        </div>
-      </Box>
+              </tbody>
+            </table>
+          </div>
+
+        </Box >
+      </div >
+
+     
     </>
   )
 }

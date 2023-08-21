@@ -33,6 +33,12 @@ import AdminManager from './AdminManager';
 import TransactionManager from './TransactionManager';
 import EditPermission from './Permissions/EditPermission';
 import AdminProfile from './AdminProfile';
+import NewChallenges from './NewChallenges';
+import NewTransaction from './NewTransaction';
+import NewAdminEarning from './NewAdminEarning';
+import NewUserManager from './NewUserManager';
+import Hidden from '@mui/material/Hidden';
+import { useState } from 'react';
 
 
 const drawerWidth = 240;
@@ -103,6 +109,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function Header() {
+    const [openDrawer, setOpenDrawer] = useState(false);
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     // const [selectedOption, setSelectedOption] = React.useState('View all users');
@@ -120,11 +127,18 @@ export default function Header() {
     // };
     const navigate = useNavigate();
 
+
+
+
+
     const handleDrawerOpen = () => {
+        setOpenDrawer(!openDrawer);
         setOpen(true);
     };
 
     const handleDrawerClose = () => {
+    
+        setOpenDrawer(false);
         setOpen(false);
     };
 
@@ -168,180 +182,198 @@ export default function Header() {
 
                     </Toolbar>
                 </AppBar>
-                <Drawer sx={{ background: '#00064b' }} variant="permanent" open={open}>
-                    <DrawerHeader>
-                        <IconButton onClick={handleDrawerClose}>
-                            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon sx={{ color: "white" }} />}
-                        </IconButton>
-                    </DrawerHeader>
-                    <Divider sx={{ background: 'black' }} />
-                    <List>
+               
+                <Drawer sx={{  background: '#00064b' }} variant="permanent" open={open}>
+                        <DrawerHeader>
+                            <IconButton onClick={handleDrawerClose}>
+                                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon sx={{ color: "white" }} />}
+                            </IconButton>
+                        </DrawerHeader>
+                        <Divider sx={{ background: 'black' }} />
+                        <List>
 
-                    </List>
-                    <Divider />
-                    <List sx={{ color: "white", fontWeight: "500", backgroundColor: "#00064b" }}>
+                        </List>
+                        <Divider />
+                        <List className='main-list' sx={{ color: "white", fontWeight: "500", backgroundColor: "#00064b" }}>
 
-                        <ListItem disablePadding sx={{ display: 'block' }} >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => navigate('/AdminProfile')}  >
-                                <ListItemIcon
+
+                            <ListItem disablePadding sx={{ display: 'block' }} >
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
-                                >
+                                    onClick={() => navigate("/")}  >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
 
-                                    <ManageAccountsIcon sx={{ color: "#00eaff", fontSize: "30px" }} />
-                                </ListItemIcon>
-                                <ListItemText primary="Admin Profile" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding sx={{ display: 'block' }} >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => navigate("/")}  >
-                                <ListItemIcon
+                                    >
+                                        <LineStyleIcon sx={{ color: "blue", fontSize: "30px" }} />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem disablePadding sx={{ display: 'block' }} >
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
+                                    onClick={() => navigate('/AdminProfile')}  >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
 
-                                >
-                                    <LineStyleIcon sx={{ color: "blue", fontSize: "30px" }} />
-                                </ListItemIcon>
-                                <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding sx={{ display: 'block' }} >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => navigate('/Challenge')} >
-                                <ListItemIcon
+                                        <ManageAccountsIcon sx={{ color: "#00eaff", fontSize: "30px" }} />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Admin Profile" sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem disablePadding sx={{ display: 'block' }} >
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
-                                >
-                                    <SportsEsportsIcon sx={{ color: "lightGreen", fontSize: "30px" }} />
-                                </ListItemIcon>
-                                <ListItemText primary="Challenge Manager" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding sx={{ display: 'block' }} >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => navigate('/UserManager')}  >
-                                <ListItemIcon
+                                    onClick={() => navigate('/NewChallenges')} >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        <SportsEsportsIcon sx={{ color: "lightGreen", fontSize: "30px" }} />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Challenge Manager" sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem disablePadding sx={{ display: 'block' }} >
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
-                                >
+                                    onClick={() => navigate('/NewUserManager')}  >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
 
-                                    <AccountCircleIcon sx={{ color: "lightBlue", fontSize: "30px" }} />
-                                </ListItemIcon>
-                                <ListItemText primary="User Manager" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding sx={{ display: 'block' }} >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => navigate('/AdminManager')}  >
-                                <ListItemIcon
+                                        <AccountCircleIcon sx={{ color: "lightBlue", fontSize: "30px" }} />
+                                    </ListItemIcon>
+                                    <ListItemText primary="User Manager" sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem disablePadding sx={{ display: 'block' }} >
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
-                                >
+                                    onClick={() => navigate('/AdminManager')}  >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
 
-                                    <AdminPanelSettingsIcon sx={{ color: "red", fontSize: "30px" }} />
-                                </ListItemIcon>
-                                <ListItemText primary="Admin Manager" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding sx={{ display: 'block' }} >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => navigate('/TransactionManager')}  >
-                                <ListItemIcon
+                                        <AdminPanelSettingsIcon sx={{ color: "red", fontSize: "30px" }} />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Admin Manager" sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem disablePadding sx={{ display: 'block' }} >
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
-                                >
+                                    onClick={() => navigate('/NewTransaction')}  >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
 
-                                    <AccountBalanceWalletIcon sx={{ color: "orange", fontSize: "30px" }} />
-                                </ListItemIcon>
-                                <ListItemText primary="Transcation Manager" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
-                        <ListItem disablePadding sx={{ display: 'block' }} >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                                onClick={() => navigate('/AdminEarning')}  >
-                                <ListItemIcon
+                                        <AccountBalanceWalletIcon sx={{ color: "orange", fontSize: "30px" }} />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Transcation Manager" sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem disablePadding sx={{ display: 'block' }} >
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
-                                >
+                                    onClick={() => navigate('/NewAdminEarning')}  >
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
 
-                                    <AttachMoneyIcon sx={{ color: "yellow", fontSize: "30px" }} />
-                                </ListItemIcon>
-                                <ListItemText primary="Admin Earning" sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
+                                        <AttachMoneyIcon sx={{ color: "yellow", fontSize: "30px" }} />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Admin Earning" sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
 
-                    </List>
-                </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                        </List>
+                    </Drawer>
+               
+                
+                <Box
+                    component="main"
+                    sx={{
+                        flexGrow: 1,
+                        p: 3,
+                        overflow: 'auto',
+                        '@media (max-width:600px)': {
+                            p: 2, // Adjust padding for smaller screens
+                        },
+                        '@media (max-width:960px)': {
+                            p: 2, // Further adjust padding for medium screens
+                        },
+                    }}
+                >
 
 
 
                     <Routes>
                         <Route exact path='/' element={<Dashboard />}></Route>
-                        <Route exact path='/Challenge' element={<Challenge />}></Route>
-                        <Route exact path='/UserManager' element={<UserManager />}></Route>
+                        
+                        <Route exact path='/NewChallenges' element={<NewChallenges />}></Route>
+                        <Route exact path='/NewUserManager' element={<NewUserManager />}></Route>
                         <Route exact path='/AdminManager' element={<AdminManager />}></Route>
-                        <Route exact path='/TransactionManager' element={<TransactionManager />}></Route>
+                        <Route exact path='/NewTransaction' element={<NewTransaction />}></Route>
                         <Route exact path='/EditPermissionr' element={<EditPermission />}></Route>
-                        <Route exact path='/AdminEarning' element={<AdminEarning />}></Route>
+                        <Route exact path='/NewAdminEarning' element={<NewAdminEarning />}></Route>
                         <Route exact path='/AdminProfile' element={<AdminProfile />}></Route>
 
                     </Routes>

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import "./AdminEarning.css";
+import React, { useRef } from 'react';
+// import "./AdminEarning.css";
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,8 +8,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { TextField, Button, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Height } from '@mui/icons-material';
+
+import html2pdf from 'html2pdf.js';
+import Button from '@mui/material/Button';
+
+
 
 const columns = [
     { id: 'number', label: 'Number', minWidth: 100 },
@@ -51,7 +56,8 @@ export default function StickyHeadTable() {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [rows, setRows] = React.useState(initialRows);
-    const[totalEarning,setTotalEarning]=React.useState('5,00,000');
+    const [totalEarning, setTotalEarning] = React.useState('5,00,000');
+    
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -61,16 +67,23 @@ export default function StickyHeadTable() {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+   
 
     return (
         <div className='Admin-earning'>
 
 
-            <Typography sx={{ color: '#29aad0', fontSize: '30px', marginTop:'5%' }} variant="h4">
-                Admin  Total Earning : {totalEarning} 
+            <Typography sx={{ color: '#29aad0', fontSize: '30px', marginTop: '5%' }} variant="h4">
+                Admin  Total Earning : {totalEarning}
+                
+
+
             </Typography>
+
+          
+
             <Paper sx={{ width: '100%', color: '#d0d05c', overflowY: 'hidden', marginTop: '2%', background: '#15236e', borderBottom: "none" }}>
-                <TableContainer sx={{ maxHeight: 440, background: '#15236e', color: '#d0d05c', Height: "10%" }}>
+                <TableContainer  sx={{ maxHeight: 440, background: '#15236e', color: '#d0d05c', Height: "10%" }}>
                     <Table stickyHeader aria-label="sticky table">
                         <TableHead sx={{ background: ' 22009b', color: '#d0d05c' }}>
                             <TableRow>

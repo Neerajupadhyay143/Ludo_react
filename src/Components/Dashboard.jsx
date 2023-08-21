@@ -7,51 +7,38 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import CancelIcon from '@mui/icons-material/Cancel';
 import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
+import SavingsIcon from '@mui/icons-material/Savings';
 import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
 import "./Dashboard.css";
+// import "./adminlte.min.css"
+import "./distcssadminlte.css"
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import { Box } from '@mui/material';
+import CountUp from 'react-countup';
 
 
 
 function Dashboard() {
   const [totalUsers, setTotalUsers] = useState(15000);
-  const [todayUser, setTodayUser] = useState(150);
-  const [activeUsers, setActiveUsers] = useState(150);
-  const [blockUsers, setBlockUsers] = useState(150);
-  const [totalUsersAvarage, setTotalUsersAvarage] = useState(150);
-  const [todayUserAvarage, setTodayUserAvarage] = useState(150);
-  const [activeUsersAvarage, setActiveUsersAvarage] = useState(150);
-  const [blockUsersAvarage, setBlockUsersAvarage] = useState(150);
-  const [count, setCount] = useState(0);
+  const [todayUser, setTodayUser] = useState(13240);
+  const [activeUsers, setActiveUsers] = useState(18240);
+  const [blockUsers, setBlockUsers] = useState(1500);
+  const [totalUsersAvarage, setTotalUsersAvarage] = useState(50);
+  const [todayUserAvarage, setTodayUserAvarage] = useState(75);
+  const [activeUsersAvarage, setActiveUsersAvarage] = useState(84);
+  const [blockUsersAvarage, setBlockUsersAvarage] = useState(78);
 
-  const increment = () => {
-   
-  }
-
-  // const targetValue = increment; // Target value for the counter
-  // const step = 500; // Increment step for the counter
-  // const delay = 1000; // Interval time in milliseconds
-
-
-
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCount((prevCount) => {
-  //       const newCount = prevCount + step;
-  //       return newCount >= targetValue ? targetValue : newCount;
-  //     });
-  //   }, delay);
-
-  //   return () => clearInterval(timer);
-  // }, [targetValue, step, delay]);
-
+  // useEffect(()=>{
+  //   fetch('https://dummyjson.com/users').then((request)=> request.json()).then((result)=>{
+  //     console.log(result.users)
+  //     setTotalUsers(result)
+  //   })
+  // },[])
   return (
     <>
-      {/* <Header /> */}
+
       <Box sx={{ display: 'flex', flexDirection: "column" }}>
 
         <section className='section'>
@@ -66,11 +53,11 @@ function Dashboard() {
             <div className="small-box bg-info" id='box-1'>
               <p>Total Users</p>
               <div className="inner">
-                <h3> {count} </h3>
+                <h3> <CountUp end={totalUsers} duration={5} /> </h3>
 
               </div>
               <div>
-                <h2>{totalUsersAvarage}% than last week</h2>
+                <h2><CountUp end={totalUsersAvarage} duration={5} />% than last week</h2>
               </div>
               <div className="icon">
                 < PublicIcon sx={{ color: "#6e6efe" }} className="fas fa-shopping-cart" />
@@ -82,10 +69,10 @@ function Dashboard() {
             <div className="small-box bg-info">
               <p>Today Users</p>
               <div className="inner">
-                <h3>{todayUser}</h3>
+                <h3><CountUp end={todayUser} duration={5} /></h3>
 
               </div>
-              <h2>{todayUserAvarage}% than last week</h2>
+              <h2> <CountUp end={todayUserAvarage} duration={8} />% than last week</h2>
               <div className="icon">
                 <AccountCircleRoundedIcon sx={{ color: "#5ea552" }} className="fas fa-shopping-cart" />
               </div>
@@ -94,10 +81,10 @@ function Dashboard() {
             <div className="small-box bg-info" id='box-3'>
               <p>Block Users</p>
               <div className="inner">
-                <h3>{blockUsers}</h3>
+                <h3><CountUp end={blockUsers} duration={5} /></h3>
 
               </div>
-              <h2>{blockUsersAvarage}% than last week</h2>
+              <h2><CountUp end={blockUsersAvarage} duration={5} />% than last week</h2>
               <div className="icon">
                 <  AppBlockingRoundedIcon sx={{ color: "#ff4444" }} className="fas fa-shopping-cart" />
               </div>
@@ -106,7 +93,7 @@ function Dashboard() {
             <div className="small-box bg-info">
               <p>Active Users</p>
               <div className="inner">
-                <h3>{activeUsers}</h3>
+                <h3><CountUp end={activeUsers} duration={5} /></h3>
 
               </div>
               <h2>{activeUsersAvarage}% than last week</h2>
@@ -139,7 +126,7 @@ function Dashboard() {
             <div className="small-box bg-info">
               <p>Complete Challenge </p>
               <div className="inner">
-                <h3>{totalUsers}</h3>
+                <h3><CountUp end={totalUsers} duration={5} /></h3>
 
               </div>
               <div>
@@ -155,10 +142,10 @@ function Dashboard() {
             <div className="small-box bg-info">
               <p>Running Challenge</p>
               <div className="inner">
-                <h3>{todayUser}</h3>
+                <h3><CountUp end={todayUser} duration={5} /></h3>
 
               </div>
-              <h2>{todayUserAvarage}% than last week</h2>
+              <h2><CountUp end={todayUserAvarage} duration={5} />% than last week</h2>
               <div className="icon">
                 < RunningWithErrorsIcon className="fas fa-shopping-cart" />
               </div>
@@ -167,10 +154,10 @@ function Dashboard() {
             <div className="small-box bg-info">
               <p> Ongoing Challenge</p>
               <div className="inner">
-                <h3>{blockUsers}</h3>
+                <h3><CountUp end={blockUsers} duration={5} /></h3>
 
               </div>
-              <h2>{blockUsersAvarage}% than last week</h2>
+              <h2><CountUp end={blockUsersAvarage} duration={5} />% than last week</h2>
               <div className="icon">
                 <i className="fas fa-shopping-cart" />
               </div>
@@ -179,10 +166,10 @@ function Dashboard() {
             <div className="small-box bg-info">
               <p>Cancelled Challenge</p>
               <div className="inner">
-                <h3>{activeUsers}</h3>
+                <h3><CountUp end={activeUsers} duration={5} /></h3>
 
               </div>
-              <h2>{activeUsersAvarage}% than last week</h2>
+              <h2>{<CountUp end={activeUsersAvarage} duration={5} />}% than last week</h2>
               <div className="icon">
                 < CancelIcon sx={{ color: "#ff4444" }} className="fas fa-shopping-cart" />
               </div>
@@ -202,7 +189,7 @@ function Dashboard() {
             <div className="small-box bg-info">
               <p>Total Deposit</p>
               <div className="inner">
-                <h3>{totalUsers}</h3>
+                <h3>{<CountUp end={totalUsers} duration={5} />}</h3>
 
               </div>
               <div>
@@ -223,7 +210,7 @@ function Dashboard() {
               </div>
               <h2>{todayUserAvarage}% than last week</h2>
               <div className="icon">
-                <i className="fas fa-shopping-cart" />
+                <SavingsIcon className="fas fa-shopping-cart" />
               </div>
 
             </div>

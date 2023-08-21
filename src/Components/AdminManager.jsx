@@ -2,9 +2,10 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import "./AdminManager.css";
+// import "./AdminManager.css";
 import { TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import { Table } from 'react-bootstrap';
+import EditPermissison from './Permissions/EditPermission';
 
 const boxStyle = {
     width: '200px',
@@ -127,7 +128,7 @@ export default function AdminPanelTable() {
                             </div>
                             <div style={{ textAlign: "center", border: "1px sold black", borderRadius: "5px", textAlign: "center", border: "1px solid lime  ", color: "lime", minWidth: columns[4].minWidth, padding: '8px', flex: 1 }}>{row.kyc}</div>
                             <div style={{ textAlign: "center", minWidth: columns[5].minWidth, padding: '8px', flex: 1 }}>
-                                <Button sx={{ color: "blue" }} variant="outlined" onClick={()=>navigate('/EditPermission')}>
+                                <Button sx={{ color: "blue" }} variant="outlined" onClick={()=>navigate('/EditPermissison')}>
                                     Edit Permission
                                 </Button>
                             </div>

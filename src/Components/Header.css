@@ -17,6 +17,54 @@
   }
 }
 
+.css-1mfv6c2-MuiList-root {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: white;
+    font-weight: 500;
+    background-color: #00064b;
+    
+}
+.css-1mfv6c2-MuiList-root:hover {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: white;
+    font-weight: 500;
+    background-color: white !important;
+}
+@media (min-width: 600px) {
+    .container-section {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 600px) {
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.5rem; /* Adjust sizes as needed */
+    }
+
+    p {
+        font-size: 1rem; /* Adjust sizes as needed */
+    }
+}
+
+/* Additional media queries and styles for other screen sizes */
+/* For example: */
+@media (max-width: 1200px) {
+    /* Styles for medium-sized screens */
+}
+
+@media (min-width: 1600px) {
+    /* Styles for large screens */
+}
 /* .MuiDrawer-paper{
   background-color: #b4a5c4;
 }
