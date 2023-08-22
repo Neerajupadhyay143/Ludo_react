@@ -10,11 +10,6 @@ import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import SavingsIcon from '@mui/icons-material/Savings';
 import RunningWithErrorsIcon from '@mui/icons-material/RunningWithErrors';
 import "./Dashboard.css";
-// import "./adminlte.min.css"
-import "./distcssadminlte.css"
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 import { Box } from '@mui/material';
 import CountUp from 'react-countup';
 

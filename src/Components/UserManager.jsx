@@ -1,5 +1,5 @@
 import React from 'react';
-import "./UserManager.css";
+// import "./UserManager.css";
 import { Avatar, Box, Button, Card, Input, Select, TablePagination } from '@mui/material';
 import axios from 'axios';
 // import { Height } from '@mui/icons-material';

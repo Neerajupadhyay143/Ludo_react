@@ -57,7 +57,15 @@ export default function StickyHeadTable() {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [rows, setRows] = React.useState(initialRows);
     const [totalEarning, setTotalEarning] = React.useState('5,00,000');
-    
+
+    const handleSearch = () => {
+        const filteredData = data.filter((item) =>
+            String(item[selectedField])
+                .toLowerCase()
+                .includes(searchText.toLowerCase())
+        );
+        setData(filteredData);
+    };
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -67,72 +75,133 @@ export default function StickyHeadTable() {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
-   
+
 
     return (
-        <div className='Admin-earning'>
+        <>
+            <section className="content">
+
+                <div className="container-fluid" style={{ marginTop: '-35px' }}>
+                    <div className="row">
+                        {/* Primary table start */}
+                        <div className="col-12 mt-5">
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="single-table">
+                                        <div className="table-responsive">
+                                            {/* fund history */}
+                                            <div id="table_id_wrapper" className="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                <div id="table_id_filter" className="dataTables_filter">
+                                                    <label>Search:<input type="search" className="form-control form-control-sm" placeholder aria-controls="table_id" /></label></div>
+                                                <table className="table text-center dataTable no-footer dtr-inline" id="table_id" role="grid" aria-describedby="table_id_info" style={{ width: 1070 }}>
+                                                    <thead className="text-capitalize">
+
+                                                        {/* <th className="sorting_asc" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 101 }} aria-sort="ascending" aria-label="SR. NO.: activate to sort column descending">SR. NO.</th> */}
+                                                        <tr role="row">
+                                                            <th className="sorting_asc" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 101 }} aria-sort="ascending" aria-label="SR. NO.: activate to sort column descending">Number</th>
+                                                            <th className="sorting" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 76 }} aria-label="From: activate to sort column ascending">ID </th>
+                                                            <th className="sorting" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 105 }} aria-label="To User: activate to sort column ascending">Name</th>
+                                                            <th className="sorting" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 175 }} aria-label="To User Name: activate to sort column ascending">Mobile</th>
+                                                            <th className="sorting" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 109 }} aria-label="Amount: activate to sort column ascending">Balance</th>
+                                                            <th className="sorting" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 129 }} aria-label="Date: activate to sort column ascending">Date</th>
+                                                            <th className="sorting" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 81 }} aria-label="Time: activate to sort column ascending">Penalty</th>
+                                                            <th className="sorting" tabIndex={0} aria-controls="table_id" rowSpan={1} colSpan={1} style={{ width: 81 }} aria-label="Time: activate to sort column ascending">Action</th>
+                                                        </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                        {renderedTableRows}
+                                                    </tbody>
+                                                </table>
+                                                <div className="dataTables_info" id="table_id_info" role="status" aria-live="polite">
+                                                    Showing 1 to 2 of 2 entries
+                                                </div>
+                                                <div className="dataTables_paginate paging_simple_numbers" id="table_id_paginate">
+                                                    <ul className="pagination"><li className="paginate_button page-item previous disabled" id="table_id_previous">
+                                                        <a href="#" aria-controls="table_id" data-dt-idx={0} tabIndex={0} className="page-link">
+                                                            Previous
+                                                        </a></li><li className="paginate_button page-item active">
+                                                            <a href="#" aria-controls="table_id" data-dt-idx={1} tabIndex={0} className="page-link">1</a></li><li className="paginate_button page-item next disabled" id="table_id_next"><a href="#" aria-controls="table_id" data-dt-idx={2} tabIndex={0} className="page-link">Next</a></li></ul></div></div>
+                                            <br /><br />
+                                            <center>
+                                                <div>
+                                                </div>
+                                            </center>
+                                            {/* fund history */}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Primary table end */}
+                    </div>
+                </div>
+            </section>
+
+        </>
+        // <div className='Admin-earning'>
 
 
-            <Typography sx={{ color: '#29aad0', fontSize: '30px', marginTop: '5%' }} variant="h4">
-                Admin  Total Earning : {totalEarning}
-                
+        //     <Typography sx={{ color: '#29aad0', fontSize: '30px', marginTop: '5%' }} variant="h4">
+        //         Admin  Total Earning : {totalEarning}
 
 
-            </Typography>
 
-          
+        //     </Typography>
 
-            <Paper sx={{ width: '100%', color: '#d0d05c', overflowY: 'hidden', marginTop: '2%', background: '#15236e', borderBottom: "none" }}>
-                <TableContainer  sx={{ maxHeight: 440, background: '#15236e', color: '#d0d05c', Height: "10%" }}>
-                    <Table stickyHeader aria-label="sticky table">
-                        <TableHead sx={{ background: ' 22009b', color: '#d0d05c' }}>
-                            <TableRow>
-                                {columns.map((column) => (
-                                    <TableCell
-                                        key={column.id}
-                                        align={column.align}
-                                        style={{ minWidth: column.minWidth }}
-                                        sx={{ borderBottom: '1px solid #22009b', }}
-                                    >
-                                        {column.label}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {rows
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .map((row) => {
-                                    return (
-                                        <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                                            {columns.map((column) => {
-                                                const value = row[column.id];
-                                                return (
-                                                    <TableCell sx={{ border: 'none' }} key={column.id} align={column.align}>
-                                                        {column.format && typeof value === 'number'
-                                                            ? column.format(value)
-                                                            : value}
-                                                    </TableCell>
-                                                );
-                                            })}
-                                        </TableRow>
-                                    );
-                                })}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-                <TablePagination
-                    sx={{ color: '#29aad0' }}
-                    rowsPerPageOptions={[10, 25, 100]}
-                    component="div"
-                    count={rows.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-            </Paper>
 
-        </div>
+
+        //     <Paper sx={{ width: '100%', color: '#d0d05c', overflowY: 'hidden', marginTop: '2%', background: '#15236e', borderBottom: "none" }}>
+        //         <TableContainer  sx={{ maxHeight: 440, background: '#15236e', color: '#d0d05c', Height: "10%" }}>
+        //             <Table stickyHeader aria-label="sticky table">
+        //                 <TableHead sx={{ background: ' 22009b', color: '#d0d05c' }}>
+        //                     <TableRow>
+        //                         {columns.map((column) => (
+        //                             <TableCell
+        //                                 key={column.id}
+        //                                 align={column.align}
+        //                                 style={{ minWidth: column.minWidth }}
+        //                                 sx={{ borderBottom: '1px solid #22009b', }}
+        //                             >
+        //                                 {column.label}
+        //                             </TableCell>
+        //                         ))}
+        //                     </TableRow>
+        //                 </TableHead>
+        //                 <TableBody>
+        //                     {rows
+        //                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+        //                         .map((row) => {
+        //                             return (
+        //                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+        //                                     {columns.map((column) => {
+        //                                         const value = row[column.id];
+        //                                         return (
+        //                                             <TableCell sx={{ border: 'none' }} key={column.id} align={column.align}>
+        //                                                 {column.format && typeof value === 'number'
+        //                                                     ? column.format(value)
+        //                                                     : value}
+        //                                             </TableCell>
+        //                                         );
+        //                                     })}
+        //                                 </TableRow>
+        //                             );
+        //                         })}
+        //                 </TableBody>
+        //             </Table>
+        //         </TableContainer>
+        //         <TablePagination
+        //             sx={{ color: '#29aad0' }}
+        //             rowsPerPageOptions={[10, 25, 100]}
+        //             component="div"
+        //             count={rows.length}
+        //             rowsPerPage={rowsPerPage}
+        //             page={page}
+        //             onPageChange={handleChangePage}
+        //             onRowsPerPageChange={handleChangeRowsPerPage}
+        //         />
+        //     </Paper>
+
+        // </div>
     );
 }

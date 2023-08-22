@@ -3,8 +3,9 @@ import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
 // import "./TransactionManager.css";
 import jsPDF from "jspdf";
+
 // import "jspdf-autotable";
-import "./TransactionManager.css";
+// import "./TransactionManager.css";
 import {
   Typography,
   Paper,
@@ -17,10 +18,10 @@ import {
   Button,
   TextField,
   TablePagination,
-  InputLabel,
+ 
   MenuItem,
   Select,
-  Input,
+  
   FormControl,
 } from "@mui/material";
 
