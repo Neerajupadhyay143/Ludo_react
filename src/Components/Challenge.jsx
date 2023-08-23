@@ -2,10 +2,7 @@
 import { Box, Input, MenuItem, Select, colors } from '@mui/material';
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import RotateLeftIcon from '@mui/icons-material/RotateLeft';
-import Header from './Header';
-// import "./Challenge.css";
-import { green, red, yellow } from '@mui/material/colors';
+
 
 function Challenge() {
 
@@ -71,6 +68,9 @@ function Challenge() {
   const [endDate, setEndDate] = useState('');
   const [statusFilter, setStatusFilter] = useState('All'); // 'All', 'Pending', 'Completed', 'In Progress', 'Cancelled'
 
+// download the pdf
+  
+
   // Filter the games based on the search term, date range, and status
   const filteredData = games.filter((game) => {
     const isMatchingCreator = game.creater.toLowerCase().includes(searchTerm.toLowerCase());
@@ -134,7 +134,7 @@ function Challenge() {
     </tr>
   ));
   return (
-    <>
+    <> 
         <section className="content">
 
           <div className="container-fluid" style={{ marginTop: '-35px' }}>

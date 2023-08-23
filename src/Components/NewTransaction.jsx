@@ -1,15 +1,20 @@
 import React, { useRef, useState } from 'react'
 import * as FileSaver from 'file-saver';
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import jsPDF from "jspdf";
-
+import "./NewTransaction.css";
 function NewTransaction() {
 
 
 
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-
+  const [searchQuery, setSearchQuery] = useState(''); // New state for search query
+  const [selectedRow,setSelectedRow]=useState();
+  const [showOptions, setShowOptions] = useState(false); // Initialize as false
+  const [acceptedRequestIndex, setAcceptedRequestIndex] = useState(null); // Index of the accepted request
   const tableData = [
     {
       number: 1,
@@ -64,7 +69,23 @@ function NewTransaction() {
     const start = new Date(startDate);
     const end = new Date(endDate);
     return dataDate >= start && dataDate <= end;
+  }).filter(data => {
+    // Apply search query filter
+    if (!searchQuery) {
+      return true;
+    }
+    const searchKeywords = searchQuery.toLowerCase().split(',');
+    return searchKeywords.some(keyword => (
+      data.name.toLowerCase().includes(keyword.trim()) ||
+      data.id.toLowerCase().includes(keyword.trim()) ||
+      data.mobile.toLowerCase().includes(keyword.trim())
+    ));
   });
+
+
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };  
 
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
@@ -90,7 +111,18 @@ function NewTransaction() {
 
 
   const renderedTableRows = filteredData.map((data, index) => (
-    <tr role="row" key={index}>
+    <tr
+      role="row"
+      key={index}
+      onMouseEnter={() => {
+        setSelectedRow(index);
+        setShowOptions(true);
+      }}
+      onMouseLeave={() => {
+        setSelectedRow(null);
+        setShowOptions(false);
+      }}
+    >
       <td>{data.number}</td>
       <td>{data.id}</td>
       <td>{data.name}</td>
@@ -112,15 +144,30 @@ function NewTransaction() {
       <td>
         {editingIndex === index ? (
           <button onClick={() => handlePenaltyChange(index, penalties[index])}>Save</button>
+
+          
         ) : (
-          <button onClick={() => setEditingIndex(index)}>Edit</button>
+         <>
+        <div style={{display:'flex'}} className='request-past'>
+
+                <button onClick={() => setEditingIndex(index)}>Edit</button>
+
+
+                <VisibilityIcon sx={{marginLeft:'1remx'}}/>
+
+        </div>
+         
+         </>
+          
+        
         )}
       </td>
     </tr>
   ));
+  
   return (
     <>
-      <section className="content">
+      <section style={{paddingTop:'5rem'}} className="content">
 
         <div className="container-fluid" style={{ marginTop: '-35px' }}>
           <div className="row">
@@ -160,7 +207,14 @@ function NewTransaction() {
                     <div className="col-md-6 mb-6" style={{ float: 'left', marginTop: 10 }}>
                       <label htmlFor="validationCustomUsername">Search  User</label>
                       <div className="input-group">
-                        <input type="text" className="form-control" id="validationCustomUsername" defaultValue placeholder="Name,Username,number" aria-describedby="inputGroupPrepend" name="user" />
+                        <input type="text"
+                          className="form-control"
+                          id="validationCustomUsername"
+                          value={searchQuery}
+                          onChange={handleSearchInputChange}
+                          placeholder="Name,Username,number"
+                          aria-describedby="inputGroupPrepend"
+                          name="user"/>
                       </div>
                     </div>
                     <div style={{ clear: 'both' }} />

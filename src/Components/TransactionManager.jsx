@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-
-// import "./TransactionManager.css";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import "./TransactionManager.css";
 import jsPDF from "jspdf";
 
 // import "jspdf-autotable";
@@ -18,16 +19,25 @@ import {
   Button,
   TextField,
   TablePagination,
- 
+
   MenuItem,
   Select,
-  
+
   FormControl,
 } from "@mui/material";
 
 function TransactionManager() {
   const [updatedPenalty, setUpdatedPenalty] = useState();
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [showOptions, setShowOptions] = useState(false);
+
+  const handleAcceptRequest = (id, requestType) => {
+    // Implement logic to accept coins or withdraw request here
+    // You can update the item's properties or perform other actions
+    console.log(`Accepted ${requestType} request for ID ${id}`);
+  };
+
   const [data, setData] = useState([
     {
       number: 1,
@@ -257,6 +267,7 @@ function TransactionManager() {
   //     XLSX.writeFile(workbook, 'transaction_data.xlsx');
   // };
 
+
   return (
     <>
       <div className="table-container">
@@ -331,10 +342,10 @@ function TransactionManager() {
         </div>
         <TableContainer
           className="table-container-1"
-          sx={{ background: "transparent", border: "1px solid blue" }}
+          sx={{ background: "transparent", border: "1px solid blue", width: "100%" }}
           component={Paper}
         >
-          <Table className="table-animation">
+          <Table sx={{width:'100%' }} className="table-animation">
             <TableHead className="table">
               <TableRow>
                 <TableCell className="row">Number</TableCell>
@@ -350,7 +361,16 @@ function TransactionManager() {
               {data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((item) => (
-                  <TableRow key={item.number}>
+                  <TableRow key={item.number}
+                    onMouseEnter={() => {
+                      setSelectedItem(item);
+                      setShowOptions(true);
+                    }}
+                    onMouseLeave={() => {
+                      setSelectedItem(null);
+                      setShowOptions(false);
+                    }}>
+
                     <TableCell className="row-data">{item.number}</TableCell>
                     <TableCell className="row-data">{item.id}</TableCell>
                     <TableCell className="row-data">{item.name}</TableCell>
@@ -404,6 +424,20 @@ function TransactionManager() {
                           </Button>
                         </div>
                       )}
+                      <TableCell className="row-data">
+                        {showOptions && selectedItem === item ? (
+                          <div className="options-container">
+                            <div className="option" onClick={() => handleAcceptRequest(item.id, "coins")}>
+                              <CheckCircleOutlineIcon /> Accept Coins Request
+                            </div>
+                            <div className="option" onClick={() => handleAcceptRequest(item.id, "withdraw")}>
+                              <CheckCircleOutlineIcon /> Accept Withdraw Request
+                            </div>
+                          </div>
+                        ) : (
+                          <VisibilityIcon className="eye-icon" />
+                        )}
+                      </TableCell>
                     </TableCell>
                   </TableRow>
                 ))}

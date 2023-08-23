@@ -266,7 +266,7 @@ export default function Header() {
                                     justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                 }}
-                                onClick={() => navigate('/NewUserManager')}  >
+                                onClick={() => navigate('/UserManager')}  >
                                 <ListItemIcon
                                     sx={{
                                         minWidth: 0,
@@ -363,11 +363,8 @@ export default function Header() {
                     }}
                 >
 
-
-
                     <Routes>
                         <Route exact path='/' element={<Dashboard />}></Route>
-
                         <Route exact path='/Challenge' element={<Challenge />}></Route>
                         <Route exact path='/NewUserManager' element={<NewUserManager />}></Route>
                         <Route exact path='/AdminManager' element={<AdminManager />}></Route>
@@ -375,7 +372,6 @@ export default function Header() {
                         <Route exact path='/EditPermissionr' element={<EditPermission />}></Route>
                         <Route exact path='/AdminEarning' element={<AdminEarning />}></Route>
                         <Route exact path='/AdminProfile' element={<AdminProfile />}></Route>
-
                     </Routes>
 
                     {/* <Dashboard /> */}
